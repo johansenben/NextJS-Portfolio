@@ -1,7 +1,7 @@
-.nav ul{
-    display: flex;
-    gap: 1rem;
+.nav ul {
+  display: flex;
+  gap: 1rem;
 }
 .currentPage {
-    font-weight: 800;
+  font-weight: 800;
 }

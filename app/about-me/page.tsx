@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import Contact from "./contact";
@@ -8,20 +8,39 @@ import Skills from "./skills";
 import styles from "./aboutMe.module.css";
 
 export default function AboutMe() {
-    const [currentlyOpen, setCurrentlyOpen] = useState("none");
-        
-    const close = () => setCurrentlyOpen("none");
-    return (
-        <div className={styles.mainBlock}>
-            <h1 className={styles.h1} >About Me</h1>
+  const [currentlyOpen, setCurrentlyOpen] = useState("none");
 
-            <Contact isOpen={currentlyOpen === "contact"} open={() => setCurrentlyOpen("contact")} close={close} />
+  const close = () => setCurrentlyOpen("none");
+  return (
+    <div className={styles.mainBlock}>
+      <h1 className={styles.h1}>About Me</h1>
+      <span>
+        <a href="">Github</a>|<a href="">LinkedIn</a>
+      </span>
 
-            <Skills isOpen={currentlyOpen === "skills"} open={() => setCurrentlyOpen("skills")} close={close} />
+      <Contact
+        isOpen={currentlyOpen === "contact"}
+        open={() => setCurrentlyOpen("contact")}
+        close={close}
+      />
 
-            <Education isOpen={currentlyOpen === "education"} open={() => setCurrentlyOpen("education")} close={close} />
+      <Skills
+        isOpen={currentlyOpen === "skills"}
+        open={() => setCurrentlyOpen("skills")}
+        close={close}
+      />
 
-            <Experience isOpen={currentlyOpen === "experience"} open={() => setCurrentlyOpen("experience")} close={close} />
-        </div>
-    );
+      <Education
+        isOpen={currentlyOpen === "education"}
+        open={() => setCurrentlyOpen("education")}
+        close={close}
+      />
+
+      <Experience
+        isOpen={currentlyOpen === "experience"}
+        open={() => setCurrentlyOpen("experience")}
+        close={close}
+      />
+    </div>
+  );
 }
