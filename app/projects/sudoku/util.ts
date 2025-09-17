@@ -1,0 +1,115 @@
+export const boxWidth = 3;
+export const boardWidth = boxWidth * boxWidth;
+
+export const cellStates = {
+  EMPTY: 0,
+  LOCKED: 1,
+  CORRECT_USER_INPUT: 2,
+  INCORRECT_USER_INPUT: 3,
+  SOLVER_INPUT: 4,
+};
+export const getCellState = (boardVal: number) => {
+  if (boardVal == 0) return cellStates.EMPTY;
+  if (boardVal < 0) return cellStates.INCORRECT_USER_INPUT;
+  if (boardVal <= boardWidth) return cellStates.LOCKED;
+  if (boardVal <= 2 * boardWidth) return cellStates.CORRECT_USER_INPUT;
+  return cellStates.SOLVER_INPUT;
+};
+export const getCellStateAsText = (boardVal: number) => {
+  const state = getCellState(boardVal);
+  return (
+    {
+      1: "locked",
+      2: "correctUserInput",
+      3: "incorrectUserInput",
+      4: "solverInput",
+    }[state] ?? "empty"
+  );
+};
+export const getBoardVal = (state: number, num: number = 0) => {
+  if (state == cellStates.EMPTY) return 0;
+  if (state == cellStates.INCORRECT_USER_INPUT) return num * -1;
+  if (state == cellStates.LOCKED) return num;
+  if (state == cellStates.CORRECT_USER_INPUT) return num + boardWidth;
+  return num + boardWidth * 2;
+};
+
+export const getCellDisplayValue = (
+  boardVal: number,
+  removeIncorrectValues: boolean = false,
+) => {
+  if (removeIncorrectValues && boardVal < 0) return 0;
+  if (boardVal == 0) return 0;
+  if (boardVal < 0) return boardVal * -1;
+  return ((boardVal - 1) % boardWidth) + 1;
+};
+
+export const isValid = (board: number[], index: number, value: number) => {
+  const row = Math.floor(index / boardWidth);
+  const col = index % boardWidth;
+  for (let i = 0; i < boardWidth; i++) {
+    if (getCellDisplayValue(board[row * boardWidth + i]) == value) return false;
+    if (getCellDisplayValue(board[i * boardWidth + col]) == value) return false;
+  }
+  for (let i = 0; i < boxWidth; i++) {
+    for (let j = 0; j < boxWidth; j++) {
+      let indexToCheck =
+        (Math.floor(row / boxWidth) * boxWidth + i) * boardWidth +
+        Math.floor(col / boxWidth) * boxWidth +
+        j;
+      if (getCellDisplayValue(board[indexToCheck]) == value) return false;
+    }
+  }
+  return true;
+};
+export const solveStates = {
+  SOLVING: 0,
+  SOLVED: 1,
+  UNSOLVEABLE: 2,
+  NOT_SOLVING: 3,
+};
+export function solve(board: number[]) {
+  let iterations = 0;
+  //board.forEach((cell,index)=>board[index]=getCellDisplayValue(cell)) for testing
+  let tryValue = 1;
+  let currentIndex = 0;
+  let reverse = false;
+  while (
+    iterations < 100000 &&
+    currentIndex >= 0 &&
+    currentIndex < boardWidth * boardWidth
+  ) {
+    iterations++;
+    if (
+      [cellStates.LOCKED, cellStates.CORRECT_USER_INPUT].includes(
+        getCellState(board[currentIndex]),
+      )
+    ) {
+      if (reverse) {
+        currentIndex--;
+        tryValue = getCellDisplayValue(board[currentIndex]);
+        continue;
+      }
+      currentIndex++;
+      tryValue = 1;
+      continue;
+    }
+    if (tryValue > boardWidth) {
+      board[currentIndex] = getBoardVal(cellStates.EMPTY, 0);
+      currentIndex--;
+      tryValue = getCellDisplayValue(board[currentIndex]);
+      reverse = true;
+      continue;
+    }
+    if (isValid(board, currentIndex, tryValue)) {
+      board[currentIndex] = getBoardVal(cellStates.SOLVER_INPUT, tryValue);
+      currentIndex++;
+      tryValue = 1;
+      reverse = false;
+      continue;
+    }
+    tryValue++;
+  }
+  if (currentIndex >= boardWidth * boardWidth) return solveStates.SOLVED;
+  return solveStates.UNSOLVEABLE;
+}

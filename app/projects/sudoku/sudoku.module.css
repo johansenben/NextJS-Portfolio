@@ -1,0 +1,80 @@
+.board {
+  --grid-color: #000;
+
+  margin: 0 auto;
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  width: 30rem;
+  height: 30rem;
+  border: 4px solid var(--grid-color);
+
+  font-size: 3rem;
+}
+
+.cell {
+  width: 100%;
+  height: 100%;
+  border: 0.5px solid var(--grid-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cell span {
+  font-size: 0.6em;
+}
+
+.boxBorderOnRight {
+  border-right: 1.5px solid var(--grid-color);
+}
+.boxBorderOnLeft {
+  border-left: 1.5px solid var(--grid-color);
+}
+.boxBorderOnBottom {
+  border-bottom: 1.5px solid var(--grid-color);
+}
+.boxBorderOnTop {
+  border-top: 1.5px solid var(--grid-color);
+}
+
+.empty {
+}
+.state-locked {
+  font-weight: 800;
+}
+.state-correctUserInput {
+  color: blue;
+}
+.state-incorrectUserInput {
+  color: red;
+}
+.state-solverInput {
+  color: green;
+}
+.selected {
+  background: #8af;
+}
+
+.bottomBtns {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 1em;
+  gap: 0.5em;
+  width: 30rem;
+  justify-content: space-between;
+}
+.solveBtn {
+  width: 100%;
+  display: block;
+  padding: 0.5em;
+  border: 1px solid;
+  grid-column: 1 / 13;
+}
+.numberBtn {
+  display: block;
+  padding: 0.5em 0.75em;
+  border: 1px solid;
+}

@@ -1,0 +1,9 @@
+.mainBlock {
+  box-sizing: border-box;
+  padding: 1em 2em;
+}
+.h1 {
+  text-align: center;
+  font-size: 2em;
+  font-weight: 800;
+}

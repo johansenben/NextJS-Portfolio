@@ -1,0 +1,63 @@
+"use client";
+import { useEffect, useState, useRef } from "react";
+
+import Cell from "./Cell";
+import styles from "./sudoku.module.css";
+import {
+  boardWidth,
+  getCellDisplayValue,
+  getCellState,
+  getCellStateAsText,
+  solve,
+  solveStates,
+} from "./util";
+
+export default function Board({
+  board,
+  solveBoard,
+  setCell,
+  selectedCell,
+  clickCell,
+  stopSolving,
+}: {
+  board: number[];
+  solveBoard: boolean;
+  setCell: (index: number, value: number) => void;
+  selectedCell: number;
+  clickCell: (index?: number) => void;
+  stopSolving: () => void;
+}) {
+  useEffect(() => {
+    if (!solveBoard) return;
+    let b = [...board];
+    let result = solve(b);
+
+    let updateIndex = 0;
+    const interval = setInterval(() => {
+      if (updateIndex >= boardWidth * boardWidth) {
+        clearInterval(interval);
+        stopSolving();
+        return;
+      }
+      setCell(updateIndex, b[updateIndex]);
+
+      updateIndex++;
+    }, 100);
+    return () => clearInterval(interval);
+  }, [solveBoard]);
+
+  return (
+    <div className={styles.board}>
+      {board.map((value, index) => (
+        <Cell
+          clickCell={clickCell}
+          isSelected={selectedCell == index}
+          key={`cell-${index}`}
+          value={getCellDisplayValue(value)}
+          state={getCellStateAsText(value)}
+          index={index}
+        />
+      ))}
+    </div>
+  );
+}
