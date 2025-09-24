@@ -71,7 +71,33 @@
       "details": []
     }
   ],
-  "skills": [
-
-  ]
+  "skills": {
+    "programming": [
+      "C++",
+      "HTML",
+      "CSS",
+      "Javascript",
+      "Java",
+      "C#",
+      "Python",
+      "SQL",
+      "Next JS",
+      "React JS",
+      "Tailwind CSS",
+      "Github",
+      "Typescript",
+      "VS Code"
+    ],
+    "IT": [
+      "Computer Repair",
+      "Chromebook Repair",
+      "Terminating Ethernet",
+      "Windows 10",
+      "Windows 11",
+      "Mac OS",
+      "Chrome OS",
+      "Network Testing"
+    ],
+    "other": ["Hard Working", "Punctual", "Detail Oriented"]
+  }
 }
