@@ -3,7 +3,7 @@ import styles from "./sudoku.module.css";
 export function NumberBtn({
   num,
   selectedCell,
-  user_setCell,
+  user_setCell
 }: {
   num: number;
   selectedCell: number;
@@ -31,4 +31,14 @@ export function SolveButton({
       Solve
     </button>
   );
+}
+
+export function PencilToggle(){
+
+}
+export function RemoveNotesButton(){
+
+}
+export function NewBoardButton(){
+
 }

@@ -4,6 +4,8 @@ import { useEffect, useState, useRef } from "react";
 import Cell from "./Cell";
 import styles from "./sudoku.module.css";
 import {
+  BoardCellType,
+  BoardType,
   boardWidth,
   getCellDisplayValue,
   getCellState,
@@ -20,9 +22,9 @@ export default function Board({
   clickCell,
   stopSolving,
 }: {
-  board: number[];
+  board: BoardType;
   solveBoard: boolean;
-  setCell: (index: number, value: number) => void;
+  setCell: (index: number, value: BoardCellType) => void;
   selectedCell: number;
   clickCell: (index?: number) => void;
   stopSolving: () => void;

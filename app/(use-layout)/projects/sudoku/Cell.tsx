@@ -2,7 +2,15 @@
 
 import clsx from "clsx";
 import styles from "./sudoku.module.css";
-import { boxWidth, boardWidth } from "./util";
+import { boxWidth, boardWidth, BoardCellType, cellContainsNotes } from "./util";
+
+function CellContent({value, cellIndex}: {value:BoardCellType, cellIndex: number}) {
+  return value == 0 
+    ? <></> 
+    : cellContainsNotes(value) 
+      ? <div className="grid grid-cols-3 grid-rows-3">{value.map((val,i)=><span className="text-[0.1rem] leading-none aspect-square text-gray-600" key={`cell-note-${cellIndex}-${i+1}`}>{val && i+1}</span>) }</div>
+      : value
+}
 
 export default function Cell({
   value,
@@ -11,13 +19,12 @@ export default function Cell({
   clickCell,
   isSelected,
 }: {
-  value: number;
+  value: BoardCellType;
   index: number;
   state: string;
   clickCell: (index?: number) => void;
   isSelected: boolean;
 }) {
-  //console.log(index, styles[`state-${getCellStateAsText(value)}`])
   return (
     <div
       onClick={() => clickCell(index)}
@@ -33,7 +40,7 @@ export default function Cell({
         ],
       )}
     >
-      <span>{value == 0 ? "" : value}</span>
+      <span><CellContent value={value} cellIndex={index} /></span>
     </div>
   );
 }

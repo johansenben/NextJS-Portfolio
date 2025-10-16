@@ -38,8 +38,6 @@
   border-top: 1.5px solid var(--grid-color);
 }
 
-.empty {
-}
 .state-locked {
   font-weight: 800;
 }
