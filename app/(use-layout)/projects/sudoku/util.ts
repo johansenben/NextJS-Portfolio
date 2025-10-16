@@ -4,7 +4,8 @@ export const boardWidth = boxWidth * boxWidth;
 export type BoardCellType = number | boolean[];
 export type BoardType = BoardCellType[];
 
-export const createLockedBoard = (setCells: { [key: number]: BoardCellType }) => Array.from({length:boardWidth*boardWidth}, (_,i)=>(setCells)[i] ?? 0);
+export const createLockedBoard = (setCells: { [key: number]: BoardCellType }) =>
+  Array.from({ length: boardWidth * boardWidth }, (_, i) => setCells[i] ?? 0);
 export const cellStates = {
   EMPTY: 0,
   LOCKED: 1,
@@ -12,7 +13,8 @@ export const cellStates = {
   INCORRECT_USER_INPUT: 3,
   SOLVER_INPUT: 4,
 };
-export const cellContainsNotes = (boardVal: BoardCellType) => Array.isArray(boardVal);
+export const cellContainsNotes = (boardVal: BoardCellType) =>
+  Array.isArray(boardVal);
 export const getCellState = (boardVal: BoardCellType) => {
   if (boardVal == 0 || cellContainsNotes(boardVal)) return cellStates.EMPTY;
   if (boardVal < 0) return cellStates.INCORRECT_USER_INPUT;
@@ -92,7 +94,9 @@ export function solve(board: BoardType) {
     ) {
       if (reverse) {
         currentIndex--;
-        tryValue = cellContainsNotes(board[currentIndex]) ? 0 : getCellDisplayValue(board[currentIndex]) as number;
+        tryValue = cellContainsNotes(board[currentIndex])
+          ? 0
+          : (getCellDisplayValue(board[currentIndex]) as number);
         continue;
       }
       currentIndex++;
@@ -102,7 +106,9 @@ export function solve(board: BoardType) {
     if (tryValue > boardWidth) {
       board[currentIndex] = getBoardVal(cellStates.EMPTY, 0);
       currentIndex--;
-      tryValue = cellContainsNotes(board[currentIndex]) ? 0 : getCellDisplayValue(board[currentIndex]) as number;
+      tryValue = cellContainsNotes(board[currentIndex])
+        ? 0
+        : (getCellDisplayValue(board[currentIndex]) as number);
       reverse = true;
       continue;
     }

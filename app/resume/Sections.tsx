@@ -212,7 +212,9 @@ export function Skills({
       <h3>Technology & IT:</h3>
       <ul className="flex justify-around flex-wrap px-32">
         {skills.IT.map((skill, i) => (
-          <Skill logoName={skill} key={`skill-${i}`}>{skill}</Skill>
+          <Skill logoName={skill} key={`skill-${i}`}>
+            {skill}
+          </Skill>
         ))}
       </ul>
       <h3>Other:</h3>

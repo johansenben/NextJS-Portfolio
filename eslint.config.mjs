@@ -20,11 +20,11 @@ const eslintConfig = [
       "next-env.d.ts",
     ],
     rules: {
-    // Rule to ensure const is used for variables that are never reassigned
-    'prefer-const': "off",
-    // Rule to warn about unused variables
-    'no-unused-vars': "off",
-  },
+      // Rule to ensure const is used for variables that are never reassigned
+      "prefer-const": "off",
+      // Rule to warn about unused variables
+      "no-unused-vars": "off",
+    },
   },
 ];
 
