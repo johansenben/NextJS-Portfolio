@@ -11,8 +11,8 @@ export default function Projects() {
   return (
     <div className={styles.mainBlock}>
       <h1 className={styles.h1}>Projects</h1>
-      <ul>
-        <ProjectComingSoonCard name="Sudoku" description="Sudoku with solver" />
+      <ul className="grid lg:grid-cols-2 sm:grid-cols-1 ">
+        <ProjectCard name="Sudoku" description="Sudoku game with a solver" href="/sudoku" image="/images/projects/sudoku.png" />
         <ProjectComingSoonCard
           name="2 Player Chess"
           description="Chess game that uses sockets to make it possible to play with 2 different devices"

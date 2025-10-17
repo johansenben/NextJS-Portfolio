@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useEffect } from "react";
 
 import Cell from "./Cell";
 import styles from "./sudoku.module.css";
