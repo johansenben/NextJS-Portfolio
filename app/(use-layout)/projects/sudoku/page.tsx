@@ -1,47 +1,44 @@
 "use client";
 import { useState } from "react";
 import Board from "./Board";
-import { BoardCellType, createLockedBoard } from "./util";
 import styles from "./sudoku.module.css";
 
-import { NumberBtn, SolveButton } from "./Buttons";
-import { clickCell, setCell, user_setCell } from "./actions";
+import { EraseCellButton, NewBoardButton, NumberBtn, PencilToggle, SolveButton } from "./Buttons";
+import { useBoard } from "./useBoard";
 
 export default function Sudoku() {
   const [isSolving, setIsSolving] = useState(false);
-  const [pencilOn, setPencilOn] = useState(true);
-  const [board, setBoard] = useState(
-    createLockedBoard({ 1: 5, 3: 7, 45: 2, 36: 3, 78: 4, 63: 1 }), //todo createRandomBoard
-  );
-  const [selected, setSelected] = useState(-1);
+  const [pencilOn, setPencilOn] = useState(false);
+  const { board, selected, clickCell, setCell, user_setCell, erase, createNewBoard } = useBoard();
 
   return (
     <>
       <Board
         board={board}
-        setCell={(index: number, value: BoardCellType) =>
-          setCell(board, setBoard, index, value)
-        }
+        setCell={setCell}
         solveBoard={isSolving}
         selectedCell={selected}
-        clickCell={(index?: number) => clickCell(selected, setSelected, index)}
+        clickCell={clickCell}
         stopSolving={() => setIsSolving(false)}
       />
-      <div className={styles.bottomBtns}>
-        <SolveButton setIsSolving={setIsSolving} />
-
+      <div className={styles.bottomBtnsRow}>
         {Array.from({ length: 9 }, (_, i) => (
           <NumberBtn
             num={i + 1}
             selectedCell={selected}
             user_setCell={(index: number, value: number) =>
-              user_setCell(board, setBoard, setSelected, pencilOn, index, value)
+              user_setCell(pencilOn, index, value)
             }
             key={`numberBtn-${i}`}
           />
         ))}
       </div>
-      <button onClick={() => setPencilOn(!pencilOn)}>pencil</button>
+      <div className={styles.bottomBtnsRow}>
+        <PencilToggle isPencilOn={pencilOn} togglePencil={() => setPencilOn(!pencilOn)} />
+        <EraseCellButton eraseSelected={() => erase(selected)}/>
+        <SolveButton setIsSolving={setIsSolving} />
+        <NewBoardButton createNewBoard={createNewBoard} />
+      </div>
     </>
   );
 }

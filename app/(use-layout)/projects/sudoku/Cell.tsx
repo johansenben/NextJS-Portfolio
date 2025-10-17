@@ -2,7 +2,8 @@
 
 import clsx from "clsx";
 import styles from "./sudoku.module.css";
-import { boxWidth, boardWidth, BoardCellType, cellContainsNotes } from "./util";
+import { boxWidth, boardWidth, cellContainsNotes } from "./util";
+import { BoardCellType } from "./types";
 
 function CellContent({
   value,
@@ -57,7 +58,7 @@ export default function Cell({
         ],
       )}
     >
-      <span>
+      <span className="select-none cursor-pointer">
         <CellContent value={value} cellIndex={index} />
       </span>
     </div>

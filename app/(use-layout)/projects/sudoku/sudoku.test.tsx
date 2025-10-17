@@ -1,12 +1,12 @@
+import { solve } from "./util";
+import { cellStates } from "./types";
 import {
-  cellStates,
   createLockedBoard,
   getBoardVal,
   getCellDisplayValue,
   getCellState,
   getCellStateAsText,
   isValid,
-  solve,
   solveStates,
 } from "./util";
 

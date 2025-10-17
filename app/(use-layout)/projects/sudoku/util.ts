@@ -1,18 +1,9 @@
+import { BoardCellType, BoardType, CellState, cellStates } from "./types";
+
 export const boxWidth = 3;
 export const boardWidth = boxWidth * boxWidth;
 
-export type BoardCellType = number | boolean[];
-export type BoardType = BoardCellType[];
 
-export const createLockedBoard = (setCells: { [key: number]: BoardCellType }) =>
-  Array.from({ length: boardWidth * boardWidth }, (_, i) => setCells[i] ?? 0);
-export const cellStates = {
-  EMPTY: 0,
-  LOCKED: 1,
-  CORRECT_USER_INPUT: 2,
-  INCORRECT_USER_INPUT: 3,
-  SOLVER_INPUT: 4,
-};
 export const cellContainsNotes = (boardVal: BoardCellType) =>
   Array.isArray(boardVal);
 export const getCellState = (boardVal: BoardCellType) => {
@@ -26,6 +17,7 @@ export const getCellStateAsText = (boardVal: BoardCellType) => {
   const state = getCellState(boardVal);
   return (
     {
+      0: "empty",
       1: "locked",
       2: "correctUserInput",
       3: "incorrectUserInput",
@@ -76,6 +68,7 @@ export const solveStates = {
   UNSOLVEABLE: 2,
   NOT_SOLVING: 3,
 };
+
 export function solve(board: BoardType) {
   let iterations = 0;
   let tryValue = 1;
@@ -88,9 +81,9 @@ export function solve(board: BoardType) {
   ) {
     iterations++;
     if (
-      [cellStates.LOCKED, cellStates.CORRECT_USER_INPUT].includes(
-        getCellState(board[currentIndex]),
-      )
+      (
+        [cellStates.LOCKED, cellStates.CORRECT_USER_INPUT] as CellState[]
+      ).includes(getCellState(board[currentIndex]))
     ) {
       if (reverse) {
         currentIndex--;
@@ -123,4 +116,26 @@ export function solve(board: BoardType) {
   }
   if (currentIndex >= boardWidth * boardWidth) return solveStates.SOLVED;
   return solveStates.UNSOLVEABLE;
+}
+
+export const createLockedBoard = (setCells: { [key: number]: BoardCellType }) =>
+  Array.from({ length: boardWidth * boardWidth }, (_, i) => setCells[i] ?? 0);
+export const createRandomBoard = (cellsToFill = 10) => {
+  let board = Array(boardWidth*boardWidth).fill(0);
+  let cellsFilled = 0;
+  let tries = 0;
+  while (cellsFilled < cellsToFill && tries < 200) {
+    tries++;
+    const index = Math.floor(Math.random() * (boardWidth * boardWidth));
+    const value = Math.floor(Math.random() * boardWidth);
+    const copy: BoardType = [...board];
+    if (!isValid(copy, index, value))
+      continue;
+    const state = solve(copy)
+    if (state == solveStates.SOLVED) {
+      board[index] = getBoardVal(cellStates.LOCKED, value);
+      cellsFilled++;
+    }
+  }
+  return board;
 }

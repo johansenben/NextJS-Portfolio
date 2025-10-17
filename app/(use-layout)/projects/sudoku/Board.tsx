@@ -3,16 +3,9 @@ import { useEffect, useState, useRef } from "react";
 
 import Cell from "./Cell";
 import styles from "./sudoku.module.css";
-import {
-  BoardCellType,
-  BoardType,
-  boardWidth,
-  getCellDisplayValue,
-  getCellState,
-  getCellStateAsText,
-  solve,
-  solveStates,
-} from "./util";
+import { boardWidth, getCellDisplayValue, getCellStateAsText } from "./util";
+import { solve } from "./util";
+import { BoardCellType, BoardType } from "./types";
 
 export default function Board({
   board,
