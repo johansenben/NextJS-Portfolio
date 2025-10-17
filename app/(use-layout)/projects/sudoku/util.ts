@@ -48,8 +48,8 @@ export const isValid = (board: BoardType, index: number, value: number) => {
   const row = Math.floor(index / boardWidth);
   const col = index % boardWidth;
   for (let i = 0; i < boardWidth; i++) {
-    if (getCellDisplayValue(board[row * boardWidth + i]) == value) return false;
-    if (getCellDisplayValue(board[i * boardWidth + col]) == value) return false;
+    if (getCellDisplayValue(board[row * boardWidth + i], true) == value) return false;
+    if (getCellDisplayValue(board[i * boardWidth + col], true) == value) return false;
   }
   for (let i = 0; i < boxWidth; i++) {
     for (let j = 0; j < boxWidth; j++) {
@@ -57,7 +57,7 @@ export const isValid = (board: BoardType, index: number, value: number) => {
         (Math.floor(row / boxWidth) * boxWidth + i) * boardWidth +
         Math.floor(col / boxWidth) * boxWidth +
         j;
-      if (getCellDisplayValue(board[indexToCheck]) == value) return false;
+      if (getCellDisplayValue(board[indexToCheck], true) == value) return false;
     }
   }
   return true;
