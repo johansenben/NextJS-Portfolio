@@ -1,7 +1,8 @@
+import { iDiv, Object } from "@/app/global-utils";
 import { BoardCellType, BoardType, CellState, cellStates } from "./types";
 
 export const boxWidth = 3;
-export const boardWidth = boxWidth * boxWidth;
+export const boardWidth = boxWidth ** 2;
 
 
 export const cellContainsNotes = (boardVal: BoardCellType) =>
@@ -45,7 +46,7 @@ export const getCellDisplayValue = (
 };
 
 export const isValid = (board: BoardType, index: number, value: number) => {
-  const row = Math.floor(index / boardWidth);
+  const row = iDiv(index / boardWidth);
   const col = index % boardWidth;
   for (let i = 0; i < boardWidth; i++) {
     if (getCellDisplayValue(board[row * boardWidth + i], true) == value) return false;
@@ -54,8 +55,8 @@ export const isValid = (board: BoardType, index: number, value: number) => {
   for (let i = 0; i < boxWidth; i++) {
     for (let j = 0; j < boxWidth; j++) {
       let indexToCheck =
-        (Math.floor(row / boxWidth) * boxWidth + i) * boardWidth +
-        Math.floor(col / boxWidth) * boxWidth +
+        (iDiv(row / boxWidth) * boxWidth + i) * boardWidth +
+        iDiv(col / boxWidth) * boxWidth +
         j;
       if (getCellDisplayValue(board[indexToCheck], true) == value) return false;
     }
@@ -77,7 +78,7 @@ export function solve(board: BoardType) {
   while (
     iterations < 100000 &&
     currentIndex >= 0 &&
-    currentIndex < boardWidth * boardWidth
+    currentIndex < boardWidth ** 2
   ) {
     iterations++;
     if (
@@ -114,20 +115,20 @@ export function solve(board: BoardType) {
     }
     tryValue++;
   }
-  if (currentIndex >= boardWidth * boardWidth) return solveStates.SOLVED;
+  if (currentIndex >= boardWidth ** 2) return solveStates.SOLVED;
   return solveStates.UNSOLVEABLE;
 }
 
-export const createLockedBoard = (setCells: { [key: number]: BoardCellType }) =>
-  Array.from({ length: boardWidth * boardWidth }, (_, i) => setCells[i] ?? 0);
+export const createLockedBoard = (setCells: Object<number, BoardCellType>) =>
+  Array.from({ length: boardWidth ** 2 }, (_, i) => setCells[i] ?? 0);
 export const createRandomBoard = (cellsToFill = 10) => {
-  let board = Array(boardWidth*boardWidth).fill(0);
+  let board = Array(boardWidth ** 2).fill(0);
   let cellsFilled = 0;
   let tries = 0;
   while (cellsFilled < cellsToFill && tries < 200) {
     tries++;
-    const index = Math.floor(Math.random() * (boardWidth * boardWidth));
-    const value = Math.floor(Math.random() * boardWidth);
+    const index = iDiv(Math.random() * (boardWidth ** 2));
+    const value = iDiv(Math.random() * boardWidth);
     const copy: BoardType = [...board];
     if (!isValid(copy, index, value))
       continue;

@@ -11,9 +11,10 @@ import {
 } from "./util";
 import { BoardCellType, BoardType, cellStates } from "./types";
 import { solve } from "./util";
+import { iDiv } from "@/app/global-utils";
 
 export const useBoard = () => {
-  const [board, setBoard] = useState<BoardType>(Array(boardWidth*boardWidth).fill(0));
+  const [board, setBoard] = useState<BoardType>(Array(boardWidth ** 2).fill(0));
   const [selected, setSelected] = useState(-1);
 
   useEffect(() => {
@@ -40,8 +41,8 @@ export const useBoard = () => {
 
   //removes note in the same row/col/box if the user places the correct number
   const removeNotesAfterCorrectPlacement = (index: number, value: number) => {
-    const row = Math.floor(index / boardWidth);
-    const col = Math.floor(index % boardWidth);
+    const row = iDiv(index / boardWidth);
+    const col = iDiv(index % boardWidth);
     for (let i = 0; i < boardWidth; i++) {
       let cell = board[row * boardWidth + i];
       if (cellContainsNotes(cell)) cell[value - 1] = false;
@@ -52,8 +53,8 @@ export const useBoard = () => {
       for (let j = 0; j < boxWidth; j++) {
         let cell =
           board[
-            (Math.floor(row / boxWidth) * boxWidth + i) * boardWidth +
-              Math.floor(col / boxWidth) * boxWidth +
+            (iDiv(row / boxWidth) * boxWidth + i) * boardWidth +
+              iDiv(col / boxWidth) * boxWidth +
               j
           ];
         if (cellContainsNotes(cell)) cell[value - 1] = false;

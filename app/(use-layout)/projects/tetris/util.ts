@@ -1,9 +1,11 @@
+import { ObjKeys, ObjValues, Object } from "@/app/global-utils";
+
 export const BOARD_WIDTH = 10, BOARD_HEIGHT = 20;
 export const SHAPES = {EMPTY: 0, I: 1, O: 2, T: 3, J: 4, L: 5, S: 6, Z: 7} as const;
 
-export type ShapeKey = keyof typeof SHAPES;
-export type Shape = (typeof SHAPES)[keyof typeof SHAPES];
-export const COLORS: {[key in Shape]: string} = {
+export type ShapeKey = ObjKeys<typeof SHAPES>;
+export type Shape = ObjValues<typeof SHAPES>;
+export const COLORS: Object<Shape, string> = {
   [SHAPES.EMPTY]: '',
   [SHAPES.I]: "cyan-500",
   [SHAPES.O]: "blue-500",
@@ -13,7 +15,7 @@ export const COLORS: {[key in Shape]: string} = {
   [SHAPES.S]: "green-500",
   [SHAPES.Z]: "red-500"
 } as const;
-export const SHAPE_LAYOUTS: {[key in Shape]: (0 | 1)[][]} = {
+export const SHAPE_LAYOUTS: Object<Shape, (0 | 1)[][]> = {
   [SHAPES.EMPTY]: [],
   [SHAPES.I]: [
     // 0°

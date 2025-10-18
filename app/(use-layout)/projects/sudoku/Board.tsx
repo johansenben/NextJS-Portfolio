@@ -29,7 +29,7 @@ export default function Board({
 
     let updateIndex = 0;
     const interval = setInterval(() => {
-      if (updateIndex >= boardWidth * boardWidth) {
+      if (updateIndex >= boardWidth ** 2) {
         clearInterval(interval);
         stopSolving();
         return;

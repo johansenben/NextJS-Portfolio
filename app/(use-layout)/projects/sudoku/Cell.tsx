@@ -4,6 +4,7 @@ import clsx from "clsx";
 import styles from "./sudoku.module.css";
 import { boxWidth, boardWidth, cellContainsNotes } from "./util";
 import { BoardCellType } from "./types";
+import { iDiv } from "@/app/global-utils";
 
 function CellContent({
   value,
@@ -54,7 +55,7 @@ export default function Cell({
           index % boxWidth
         ],
         { 0: styles.boxBorderOnTop, [boxWidth - 1]: styles.boxBorderOnBottom }[
-          Math.floor(index / boardWidth) % boxWidth
+          iDiv(index / boardWidth) % boxWidth
         ],
       )}
     >
