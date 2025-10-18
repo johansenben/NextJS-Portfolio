@@ -25,7 +25,7 @@ export default function Board({
   useEffect(() => {
     if (!solveBoard) return;
     let b = [...board];
-    let result = solve(b);
+    solve(b);
 
     let updateIndex = 0;
     const interval = setInterval(() => {

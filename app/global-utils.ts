@@ -44,10 +44,10 @@ export type ObjOptional<Obj, Keys extends keyof Obj> =
 //function:
 
 //return type of function
-export type Return<Func> = Func extends (...args: any[]) => infer Return ? Return : never;
+export type Return<Func> = Func extends (...args: unknown[]) => infer Return ? Return : never;
 
 //parameters of function as array
-export type Parameters<Func> = Func extends (...args: (infer Params)) => any ? Params : never;
+export type Parameters<Func> = Func extends (...args: (infer Params)) => unknown ? Params : never;
 
 /******************** Functions **********************/
 export const iDiv = Math.floor;

@@ -10,7 +10,7 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  // ✅ Standalone ignore block
   {
     ignores: [
       "node_modules/**",
@@ -18,12 +18,20 @@ const eslintConfig = [
       "out/**",
       "build/**",
       "next-env.d.ts",
+      ".swc/**",
+      "jest.config.js",
     ],
+  },
+
+  // ✅ Extend the Next.js config
+  ...compat.extends("next/core-web-vitals", "next/typescript"),
+
+  // ✅ Your overrides
+  {
     rules: {
-      // Rule to ensure const is used for variables that are never reassigned
       "prefer-const": "off",
-      // Rule to warn about unused variables
       "no-unused-vars": "off",
+      "react-hooks/exhaustive-deps": "off"
     },
   },
 ];

@@ -54,9 +54,7 @@ export function EraseCellButton({eraseSelected}: {eraseSelected: ()=>void}) {
     </div>
     );
 }
-export function RemoveNotesButton({ removeAllNotes}: {removeAllNotes: ()=>void}) {
-//todo ???
-}
+
 export function NewBoardButton({createNewBoard}: {createNewBoard: ()=>void}) {
   return (
     <div onClick={createNewBoard} className="select-none cursor-pointer flex items-center justify-center flex-col">

@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import Link from "next/link";
-import { JSX, ReactNode } from "react";
+import { ReactNode } from "react";
 import { CheckCircleIcon, ExclamationTriangleIcon } from "@heroicons/react/24/solid";
 import { LightBulbIcon } from "@heroicons/react/16/solid";
 import Image from "next/image";

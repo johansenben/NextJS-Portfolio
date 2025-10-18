@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint",
+    "lint": "eslint . --ignore-pattern node_modules",
+    "lint:no-warn": "eslint . --quiet",
     "format": "prettier --write .",
     "test": "jest"
   },
