@@ -1,4 +1,3 @@
-import { ObjValues } from "@/app/global-utils";
 
 export type BoardCellType = number | boolean[];
 export type BoardType = BoardCellType[];

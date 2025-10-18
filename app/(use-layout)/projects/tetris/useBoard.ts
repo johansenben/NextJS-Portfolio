@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { BOARD_HEIGHT, BOARD_WIDTH, CellData, Shape, SHAPE_LAYOUTS, SHAPES } from "./util";
-import { iDiv, SetState } from "@/app/global-utils";
+import { iDiv } from "@/app/global-utils";
 
 const getShape = (shapeType: Shape, rotation: number) => {
   return SHAPE_LAYOUTS[shapeType][rotation]?.map(isTile => isTile ? shapeType : SHAPES.EMPTY) ?? Array(16).fill(SHAPES.EMPTY);

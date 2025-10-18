@@ -1,4 +1,4 @@
-import { iDiv, Object } from "@/app/global-utils";
+import { iDiv } from "@/app/global-utils";
 import { BoardCellType, BoardType, CellState, cellStates } from "./types";
 
 export const boxWidth = 3;
@@ -119,7 +119,7 @@ export function solve(board: BoardType) {
   return solveStates.UNSOLVEABLE;
 }
 
-export const createLockedBoard = (setCells: Object<number, BoardCellType>) =>
+export const createLockedBoard = (setCells: ObjectType<number, BoardCellType>) =>
   Array.from({ length: boardWidth ** 2 }, (_, i) => setCells[i] ?? 0);
 export const createRandomBoard = (cellsToFill = 10) => {
   let board = Array(boardWidth ** 2).fill(0);
