@@ -72,8 +72,10 @@ export const useBoard = () => {
       return;
     }
     const valid = isValid(b, index, value);
-    if (pencilOn && state == cellStates.EMPTY) {console.log(1)
-      if (!valid) return;console.log(2)
+    if (pencilOn && state == cellStates.EMPTY) {
+      console.log(1);
+      if (!valid) return;
+      console.log(2);
       toggleCellNote(index, value);
       return;
     }
@@ -87,14 +89,21 @@ export const useBoard = () => {
   };
 
   const erase = (index: number) => {
-    if (getCellState(board[index]) != cellStates.LOCKED)
-      setCell(index, 0);
+    if (getCellState(board[index]) != cellStates.LOCKED) setCell(index, 0);
     setSelected(-1);
-  }
+  };
 
   const createNewBoard = () => {
     setBoard(createRandomBoard());
-  }
+  };
 
-  return { board, selected, clickCell, setCell, user_setCell, erase, createNewBoard };
+  return {
+    board,
+    selected,
+    clickCell,
+    setCell,
+    user_setCell,
+    erase,
+    createNewBoard,
+  };
 };

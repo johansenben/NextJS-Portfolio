@@ -15,7 +15,10 @@ export function NumberBtn({
 }) {
   return (
     <button
-      className={clsx(styles.numberBtn, "select-none cursor-pointer px-3 py-2 border-solid border-[1px]")}
+      className={clsx(
+        styles.numberBtn,
+        "select-none cursor-pointer px-3 py-2 border-solid border-[1px]",
+      )}
       onClick={() => {
         if (selectedCell != -1) user_setCell(selectedCell, num);
       }}
@@ -31,33 +34,62 @@ export function SolveButton({
   setIsSolving: (isSolving: boolean) => void;
 }) {
   return (
-    <div onClick={() => setIsSolving(true)} className="select-none cursor-pointer flex items-center justify-center flex-col">
+    <div
+      onClick={() => setIsSolving(true)}
+      className="select-none cursor-pointer flex items-center justify-center flex-col"
+    >
       <PlayIcon className="w-8" />
       <span>Solve</span>
     </div>
   );
 }
 
-export function PencilToggle({ togglePencil, isPencilOn }: {togglePencil: ()=>void, isPencilOn: boolean}) {
+export function PencilToggle({
+  togglePencil,
+  isPencilOn,
+}: {
+  togglePencil: () => void;
+  isPencilOn: boolean;
+}) {
   return (
-    <div onClick={togglePencil} className={clsx("select-none cursor-pointer", isPencilOn ? "text-blue-600" : "text-black")}>
-      <PencilIcon className={clsx("w-8")} ></PencilIcon>
+    <div
+      onClick={togglePencil}
+      className={clsx(
+        "select-none cursor-pointer",
+        isPencilOn ? "text-blue-600" : "text-black",
+      )}
+    >
+      <PencilIcon className={clsx("w-8")}></PencilIcon>
       <span>{isPencilOn ? "On" : "Off"}</span>
     </div>
   );
 }
-export function EraseCellButton({eraseSelected}: {eraseSelected: ()=>void}) {
+export function EraseCellButton({
+  eraseSelected,
+}: {
+  eraseSelected: () => void;
+}) {
   return (
-    <div onClick={eraseSelected} className="select-none cursor-pointer flex items-center justify-center flex-col">
+    <div
+      onClick={eraseSelected}
+      className="select-none cursor-pointer flex items-center justify-center flex-col"
+    >
       <TrashIcon className="w-8" />
       <span>Delete</span>
     </div>
-    );
+  );
 }
 
-export function NewBoardButton({createNewBoard}: {createNewBoard: ()=>void}) {
+export function NewBoardButton({
+  createNewBoard,
+}: {
+  createNewBoard: () => void;
+}) {
   return (
-    <div onClick={createNewBoard} className="select-none cursor-pointer flex items-center justify-center flex-col">
+    <div
+      onClick={createNewBoard}
+      className="select-none cursor-pointer flex items-center justify-center flex-col"
+    >
       <svg
         className="w-8"
         xmlns="http://www.w3.org/2000/svg"
@@ -81,6 +113,5 @@ export function NewBoardButton({createNewBoard}: {createNewBoard: ()=>void}) {
       </svg>
       <span>New</span>
     </div>
-    
   );
 }

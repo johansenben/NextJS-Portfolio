@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Board from "./Board";
 import Controls from "./Controls";
@@ -8,8 +8,13 @@ export default function Tetris() {
   const { board, rotate, moveX, moveDown, newShape } = useBoard();
   return (
     <>
-    <Board board={board} />
-    <Controls rotate={rotate} newShape={newShape} moveDown={moveDown} moveX={moveX} />
+      <Board board={board} />
+      <Controls
+        rotate={rotate}
+        newShape={newShape}
+        moveDown={moveDown}
+        moveX={moveX}
+      />
     </>
   );
 }

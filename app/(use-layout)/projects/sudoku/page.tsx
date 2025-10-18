@@ -3,13 +3,27 @@ import { useState } from "react";
 import Board from "./Board";
 import styles from "./sudoku.module.css";
 
-import { EraseCellButton, NewBoardButton, NumberBtn, PencilToggle, SolveButton } from "./Buttons";
+import {
+  EraseCellButton,
+  NewBoardButton,
+  NumberBtn,
+  PencilToggle,
+  SolveButton,
+} from "./Buttons";
 import { useBoard } from "./useBoard";
 
 export default function Sudoku() {
   const [isSolving, setIsSolving] = useState(false);
   const [pencilOn, setPencilOn] = useState(false);
-  const { board, selected, clickCell, setCell, user_setCell, erase, createNewBoard } = useBoard();
+  const {
+    board,
+    selected,
+    clickCell,
+    setCell,
+    user_setCell,
+    erase,
+    createNewBoard,
+  } = useBoard();
 
   return (
     <>
@@ -34,8 +48,11 @@ export default function Sudoku() {
         ))}
       </div>
       <div className={styles.bottomBtnsRow}>
-        <PencilToggle isPencilOn={pencilOn} togglePencil={() => setPencilOn(!pencilOn)} />
-        <EraseCellButton eraseSelected={() => erase(selected)}/>
+        <PencilToggle
+          isPencilOn={pencilOn}
+          togglePencil={() => setPencilOn(!pencilOn)}
+        />
+        <EraseCellButton eraseSelected={() => erase(selected)} />
         <SolveButton setIsSolving={setIsSolving} />
         <NewBoardButton createNewBoard={createNewBoard} />
       </div>

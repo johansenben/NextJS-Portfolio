@@ -4,7 +4,6 @@ import { BoardCellType, BoardType, CellState, cellStates } from "./types";
 export const boxWidth = 3;
 export const boardWidth = boxWidth ** 2;
 
-
 export const cellContainsNotes = (boardVal: BoardCellType) =>
   Array.isArray(boardVal);
 export const getCellState = (boardVal: BoardCellType) => {
@@ -49,8 +48,10 @@ export const isValid = (board: BoardType, index: number, value: number) => {
   const row = iDiv(index / boardWidth);
   const col = index % boardWidth;
   for (let i = 0; i < boardWidth; i++) {
-    if (getCellDisplayValue(board[row * boardWidth + i], true) == value) return false;
-    if (getCellDisplayValue(board[i * boardWidth + col], true) == value) return false;
+    if (getCellDisplayValue(board[row * boardWidth + i], true) == value)
+      return false;
+    if (getCellDisplayValue(board[i * boardWidth + col], true) == value)
+      return false;
   }
   for (let i = 0; i < boxWidth; i++) {
     for (let j = 0; j < boxWidth; j++) {
@@ -119,24 +120,24 @@ export function solve(board: BoardType) {
   return solveStates.UNSOLVEABLE;
 }
 
-export const createLockedBoard = (setCells: ObjectType<number, BoardCellType>) =>
-  Array.from({ length: boardWidth ** 2 }, (_, i) => setCells[i] ?? 0);
+export const createLockedBoard = (
+  setCells: ObjectType<number, BoardCellType>,
+) => Array.from({ length: boardWidth ** 2 }, (_, i) => setCells[i] ?? 0);
 export const createRandomBoard = (cellsToFill = 10) => {
   let board = Array(boardWidth ** 2).fill(0);
   let cellsFilled = 0;
   let tries = 0;
   while (cellsFilled < cellsToFill && tries < 200) {
     tries++;
-    const index = iDiv(Math.random() * (boardWidth ** 2));
+    const index = iDiv(Math.random() * boardWidth ** 2);
     const value = iDiv(Math.random() * boardWidth);
     const copy: BoardType = [...board];
-    if (!isValid(copy, index, value))
-      continue;
-    const state = solve(copy)
+    if (!isValid(copy, index, value)) continue;
+    const state = solve(copy);
     if (state == solveStates.SOLVED) {
       board[index] = getBoardVal(cellStates.LOCKED, value);
       cellsFilled++;
     }
   }
   return board;
-}
+};

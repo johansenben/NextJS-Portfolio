@@ -1,4 +1,3 @@
-
 export type BoardCellType = number | boolean[];
 export type BoardType = BoardCellType[];
 
