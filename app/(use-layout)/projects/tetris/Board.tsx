@@ -1,12 +1,17 @@
 import Cell from "./Cell";
 import { CellData } from "./util";
 
-export default function Board({ board }: { board: CellData[] }) {
+export default function Board({ board, startGameOverlay, startGame }: { board: CellData[], startGameOverlay: boolean, startGame: ()=>void }) {
   return (
-    <div className="grid grid-cols-10 w-fit border-4 mx-auto mt-4">
-      {board.map((cell, i) => (
-        <Cell key={`cell-${i}`} cellType={cell.tile} />
-      ))}
+    <div className="w-fit mx-auto mt-4 relative">
+      <div className="grid grid-cols-10 w-fit border-4">
+        {board.map((cell, i) => (
+          <Cell key={`cell-${i}`} cellType={cell.tile} />
+        ))}
+      </div>
+      {
+        startGameOverlay && <div onClick={startGame} className="flex items-center justify-center w-full h-full bg-[#8886] absolute top-0 font-bold text-xl">Start Game</div>
+      }
     </div>
   );
 }

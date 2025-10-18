@@ -11,9 +11,9 @@ export const SHAPES = {
   Z: 7,
 } as const;
 
-export type ShapeKey = ObjKeys<typeof SHAPES>;
+export type ShapeKey = keyof typeof SHAPES;
 export type Shape = ObjValues<typeof SHAPES>;
-export const COLORS: ObjectType<Shape, string> = {
+export const COLORS: Record<Shape, string> = {
   [SHAPES.EMPTY]: "",
   [SHAPES.I]: "cyan-500",
   [SHAPES.O]: "blue-500",
@@ -23,7 +23,7 @@ export const COLORS: ObjectType<Shape, string> = {
   [SHAPES.S]: "green-500",
   [SHAPES.Z]: "red-500",
 } as const;
-export const SHAPE_LAYOUTS: ObjectType<Shape, (0 | 1)[][]> = {
+export const SHAPE_LAYOUTS: Record<Shape, (0 | 1)[][]> = {
   [SHAPES.EMPTY]: [],
   [SHAPES.I]: [
     // 0°

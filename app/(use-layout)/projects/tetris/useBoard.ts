@@ -126,7 +126,7 @@ const useCurrentShape = () => {
     newShape,
   };
 };
-export const useBoard = (run = true) => {
+export const useBoard = (run = false) => {
   const [board, setBoard] = useState(
     Array(BOARD_WIDTH * BOARD_HEIGHT).fill(SHAPES.EMPTY),
   );
@@ -161,13 +161,12 @@ export const useBoard = (run = true) => {
     if (!run) return;
 
     const interval = setInterval(() => {
-      console.log(3);
       moveDown(board, setBoard, shape);
       removeFullRows();
-    }, 1000);
+    }, 500);
 
     return () => clearInterval(interval);
-  }, [run]);
+  }, [run, shape, board]);
 
   return {
     board: getBoardData(board, shape, [x, y]),

@@ -121,7 +121,7 @@ export function solve(board: BoardType) {
 }
 
 export const createLockedBoard = (
-  setCells: ObjectType<number, BoardCellType>,
+  setCells: Record<number, BoardCellType>,
 ) => Array.from({ length: boardWidth ** 2 }, (_, i) => setCells[i] ?? 0);
 export const createRandomBoard = (cellsToFill = 10) => {
   let board = Array(boardWidth ** 2).fill(0);

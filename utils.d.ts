@@ -13,29 +13,29 @@ declare global {
 
   //objects:
 
-  //simpler object type
-  type ObjectType<Key extends string | number | symbol, Val> = {
-    [key in Key]: Val;
-  };
+  //simpler object type - Record
+  // type ObjectType<Key extends string | number | symbol, Val> = {
+  //   [key in Key]: Val;
+  // };
 
   //union of all keys from an object
-  type ObjKeys<Obj extends object> = keyof Obj;
+  // type ObjKeys<Obj extends object> = keyof Obj;
 
   //union of all values from an object
   type ObjValues<Obj extends object> = Obj[keyof Obj];
 
-  //include all key/value pairs that match the Keys type
-  type ObjIncludeKeys<Obj, Keys extends keyof Obj> = {
-    [key in Keys]: Obj[keyof Obj];
-  };
+  //include all key/value pairs that match the Keys type - Pick
+  // type ObjIncludeKeys<Obj, Keys extends keyof Obj> = {
+  //   [K in Keys]: Obj[K];
+  // };
 
-  //omit all key/value pairs that match the Keys type
-  type ObjOmitKeys<Obj, Keys extends keyof Obj> = {
-    [key in Exclude<keyof Obj, Keys>]: Obj[keyof Obj];
-  };
+  //omit all key/value pairs that match the Keys type - Omit
+  // type ObjOmitKeys<Obj, Keys extends keyof Obj> = {
+  //   [Key in Exclude<keyof Obj, Keys>]: Obj[Key];
+  // };
 
-  //makes all key/value pairs optional
-  type ObjAllOptional<Obj> = { [key in keyof Obj]?: Obj[key] };
+  //makes all key/value pairs optional - Partial
+  // type ObjAllOptional<Obj> = { [key in keyof Obj]?: Obj[key] };
 
   //makes key/value pairs optional if they match the Keys type
   type ObjOptional<Obj, Keys extends keyof Obj> = Merge<
@@ -48,13 +48,32 @@ declare global {
 
   //function:
 
-  //return type of function
-  type Return<Func> = Func extends (...args: unknown[]) => infer Return
-    ? Return
-    : never;
+  //return type of function - ReturnType
+  // type Return<Func> = Func extends (...args: unknown[]) => infer Return
+  //   ? Return
+  //   : never;
 
-  //parameters of function as array
-  type Parameters<Func> = Func extends (...args: infer Params) => unknown
-    ? Params
-    : never;
+  //parameters of function as array - Parameters
+  // type Parameters<Func> = Func extends (...args: infer Params) => unknown
+  //   ? Params
+  //   : never;
 }
+
+// type a = "123" | "abc";
+// type b = "456" | "def";
+
+// type HyphenatedString = `${a}-${b}`;
+// function doSomething(input: HyphenatedString) {
+//   console.log(input);
+// }
+// doSomething("abc-456")
+
+// type word1 = "background" | "text" | "border"
+// type word2 = "red" | "blue" | "green"
+// type word3 = "100" | "200" | "300"
+
+// type T = `${word1}-${word2}-${word3}` | (string & {});
+
+// function x(y: T){
+
+// }
