@@ -4,7 +4,7 @@ import clsx from "clsx";
 import styles from "./sudoku.module.css";
 import { boxWidth, boardWidth, cellContainsNotes } from "./util";
 import { BoardCellType } from "./types";
-import { iDiv } from "@/app/global-utils";
+import { iDiv } from "@/global-utils";
 
 function CellContent({
   value,

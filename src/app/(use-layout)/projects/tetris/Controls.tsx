@@ -3,13 +3,13 @@ export default function Controls({
   newShape,
   moveDown,
   moveX,
-  playPause
+  playPause,
 }: {
   rotate: () => void;
   newShape: () => void;
   moveDown: () => void;
   moveX: (d: 1 | -1) => void;
-  playPause: ()=>void
+  playPause: () => void;
 }) {
   return (
     <div className="grid w-fit">

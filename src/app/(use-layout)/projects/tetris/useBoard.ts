@@ -9,7 +9,7 @@ import {
   SHAPE_LAYOUTS,
   SHAPES,
 } from "./util";
-import { iDiv } from "@/app/global-utils";
+import { iDiv } from "@/global-utils";
 
 const getShape = (shapeType: Shape, rotation: number) => {
   return (
@@ -99,7 +99,7 @@ const useCurrentShape = () => {
   const newShape = () => {
     setPos([3, -4]);
     setRotation(0);
-    const shapes = Object.values(SHAPES);
+    const shapes = Object.values(SHAPES).filter(s => s != SHAPES.EMPTY);
     setShapeType(
       nextShapeType != SHAPES.EMPTY
         ? nextShapeType
@@ -124,6 +124,7 @@ const useCurrentShape = () => {
     moveX,
     moveDown,
     newShape,
+    nextShapeType,
   };
 };
 export const useBoard = (run = false) => {
@@ -137,6 +138,7 @@ export const useBoard = (run = false) => {
     moveX,
     moveDown,
     newShape,
+    nextShapeType,
   } = useCurrentShape();
 
   const removeFullRows = () => {
@@ -180,5 +182,6 @@ export const useBoard = (run = false) => {
       removeFullRows();
     },
     newShape,
+    nextShapeType,
   };
 };
