@@ -12,7 +12,7 @@ export default function Controls({
   playPause: ()=>void
 }) {
   return (
-    <div className="grid absolute right-32 top-[50%]">
+    <div className="grid w-fit">
       <button onClick={playPause}>Play/Pause</button>
       <button onClick={newShape}>new shape</button>
       <button onClick={moveDown}>down</button>

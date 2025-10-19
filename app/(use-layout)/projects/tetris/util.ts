@@ -16,7 +16,7 @@ export type Shape = ObjValues<typeof SHAPES>;
 export const COLORS: Record<Shape, string> = {
   [SHAPES.EMPTY]: "",
   [SHAPES.I]: "cyan-500",
-  [SHAPES.O]: "blue-500",
+  [SHAPES.O]: "yellow-500",
   [SHAPES.T]: "purple-500",
   [SHAPES.J]: "blue-500",
   [SHAPES.L]: "orange-500",

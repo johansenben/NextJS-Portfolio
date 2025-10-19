@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { Shape, SHAPES } from "./util";
 
 export const COLORS: { [key in Shape]: string } = {
@@ -10,16 +11,18 @@ export const COLORS: { [key in Shape]: string } = {
   [SHAPES.S]: "#008000",
   [SHAPES.Z]: "#ff0000",
 } as const;
-export default function Cell({ cellType }: { cellType: Shape }) {
+export default function Cell({ cellType, invisibleEmptyCell = false, className = "" }: { cellType: Shape, invisibleEmptyCell?: boolean, className?: string }) {
   return (
     <div
-      className="w-8 h-8 box-border"
+      className={clsx("w-[2em] h-[2em] box-border", className)}
       style={{
         background: COLORS[cellType],
         ...(cellType == SHAPES.EMPTY
-          ? {
+          ? (!invisibleEmptyCell ? {
               border: "1px solid #333",
-            }
+            } : {
+              background: "none"
+            })
           : {
               borderTop: "0.25rem solid #0004",
               borderLeft: "0.25rem solid #0008",

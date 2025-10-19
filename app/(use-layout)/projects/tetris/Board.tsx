@@ -3,8 +3,8 @@ import { CellData } from "./util";
 
 export default function Board({ board, startGameOverlay, startGame }: { board: CellData[], startGameOverlay: boolean, startGame: ()=>void }) {
   return (
-    <div className="w-fit mx-auto mt-4 relative">
-      <div className="grid grid-cols-10 w-fit border-4">
+    <div className="w-fit relative row-span-3">
+      <div className="grid grid-cols-10 w-fit border-4 text-[1rem]">
         {board.map((cell, i) => (
           <Cell key={`cell-${i}`} cellType={cell.tile} />
         ))}
