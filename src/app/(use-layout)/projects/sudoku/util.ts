@@ -1,4 +1,4 @@
-import { iDiv } from "@/global-utils";
+import { iDiv } from "@/util/global-utils";
 import { BoardCellType, BoardType, CellState, cellStates } from "./types";
 
 export const boxWidth = 3;

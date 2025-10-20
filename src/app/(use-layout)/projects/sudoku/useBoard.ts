@@ -11,7 +11,7 @@ import {
 } from "./util";
 import { BoardCellType, BoardType, cellStates } from "./types";
 import { solve } from "./util";
-import { iDiv } from "@/global-utils";
+import { iDiv } from "@/util/global-utils";
 
 export const useBoard = () => {
   const [board, setBoard] = useState<BoardType>(Array(boardWidth ** 2).fill(0));

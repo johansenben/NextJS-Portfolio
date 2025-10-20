@@ -9,7 +9,7 @@ import {
   SHAPE_LAYOUTS,
   SHAPES,
 } from "./util";
-import { iDiv } from "@/global-utils";
+import { iDiv } from "@/util/global-utils";
 
 const getShape = (shapeType: Shape, rotation: number) => {
   return (
@@ -99,7 +99,7 @@ const useCurrentShape = () => {
   const newShape = () => {
     setPos([3, -4]);
     setRotation(0);
-    const shapes = Object.values(SHAPES).filter(s => s != SHAPES.EMPTY);
+    const shapes = Object.values(SHAPES).filter((s) => s != SHAPES.EMPTY);
     setShapeType(
       nextShapeType != SHAPES.EMPTY
         ? nextShapeType

@@ -1,11 +1,11 @@
 import { Dispatch, SetStateAction } from "react";
 
-//helpers:
-
-//makes vs code show the object type when using '&' to join 2 object types together instead of "Type1 & Type2"
-type Merge<Obj> = { [Key in keyof Obj]: Obj[Key] };
-
 declare global {
+  //helpers:
+
+  //makes vs code show the object type when using '&' to join 2 object types together instead of "Type1 & Type2"
+  type Merge<Obj> = { [Key in keyof Obj]: Obj[Key] };
+
   //react/next:
 
   //set function from useState
