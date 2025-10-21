@@ -6,62 +6,52 @@ import { boxWidth, boardWidth, cellContainsNotes } from "./util";
 import { BoardCellType } from "./types";
 import { iDiv } from "@/util/global-utils";
 
-function CellContent({
-  value,
-  cellIndex,
-}: {
-  value: BoardCellType;
-  cellIndex: number;
-}) {
-  return value == 0 ? (
-    <></>
-  ) : cellContainsNotes(value) ? (
-    <div className="grid grid-cols-3 grid-rows-3">
-      {value.map((val, i) => (
-        <span
-          className="text-[0.1rem] leading-none aspect-square text-gray-600"
-          key={`cell-note-${cellIndex}-${i + 1}`}
-        >
-          {val && i + 1}
-        </span>
-      ))}
-    </div>
-  ) : (
-    value
-  );
+function CellContent({ value, cellIndex }: { value: BoardCellType; cellIndex: number }) {
+	return value == 0 ? (
+		<></>
+	) : cellContainsNotes(value) ? (
+		<div className="grid grid-cols-3 grid-rows-3">
+			{value.map((val, i) => (
+				<span
+					className="text-[0.1rem] leading-none aspect-square text-gray-600"
+					key={`cell-note-${cellIndex}-${i + 1}`}
+				>
+					{val && i + 1}
+				</span>
+			))}
+		</div>
+	) : (
+		value
+	);
 }
 
 export default function Cell({
-  value,
-  index,
-  state,
-  clickCell,
-  isSelected,
+	value,
+	index,
+	state,
+	clickCell,
+	isSelected
 }: {
-  value: BoardCellType;
-  index: number;
-  state: string;
-  clickCell: (index?: number) => void;
-  isSelected: boolean;
+	value: BoardCellType;
+	index: number;
+	state: string;
+	clickCell: (index?: number) => void;
+	isSelected: boolean;
 }) {
-  return (
-    <div
-      onClick={() => clickCell(index)}
-      className={clsx(
-        styles.cell,
-        styles[`state-${state}`],
-        isSelected ? styles.selected : "",
-        { 0: styles.boxBorderOnLeft, [boxWidth - 1]: styles.boxBorderOnRight }[
-          index % boxWidth
-        ],
-        { 0: styles.boxBorderOnTop, [boxWidth - 1]: styles.boxBorderOnBottom }[
-          iDiv(index / boardWidth) % boxWidth
-        ],
-      )}
-    >
-      <span className="select-none cursor-pointer">
-        <CellContent value={value} cellIndex={index} />
-      </span>
-    </div>
-  );
+	return (
+		<div
+			onClick={() => clickCell(index)}
+			className={clsx(
+				styles.cell,
+				styles[`state-${state}`],
+				isSelected ? styles.selected : "",
+				{ 0: styles.boxBorderOnLeft, [boxWidth - 1]: styles.boxBorderOnRight }[index % boxWidth],
+				{ 0: styles.boxBorderOnTop, [boxWidth - 1]: styles.boxBorderOnBottom }[iDiv(index / boardWidth) % boxWidth]
+			)}
+		>
+			<span className="select-none cursor-pointer">
+				<CellContent value={value} cellIndex={index} />
+			</span>
+		</div>
+	);
 }

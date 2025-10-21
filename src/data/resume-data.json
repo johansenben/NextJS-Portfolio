@@ -1,103 +1,103 @@
 {
-  "contact": {
-    "phone": "(403) 892 - 2291",
-    "email": "johansenben12@gmail.com"
-  },
-  "links": {
-    "portfolio": "",
-    "linkedin": ""
-  },
-  "experience": [
-    {
-      "employer": "Horizon School Division",
-      "location": "Taber, AB",
-      "title": "Casual I.T. Technician",
-      "starts": ["Nov. 2024"],
-      "ends": ["Jan. 2025"],
-      "description": "I was recalled on a casual basis to assist the tech team/IT department during a leave.  My tasks have been similar to the summer position.  I have completed support tickets, repaired chromebooks/computers and projectors, delivered technology orders, and explained tech problems to staff."
-    },
-    {
-      "employer": "Horizon School Division",
-      "location": "Taber, AB",
-      "title": "Summer Tech Assistant",
-      "starts": ["May 2024"],
-      "ends": ["Aug. 2024"],
-      "description": "I worked with the tech team/IT department and did  various tasks including repairing chromebooks/computers, answering questions about technology, testing technology, terminated RJ45 cables (ethernet), and toning/tracing ethernet cables, installing windows 10, organizing the tech workroom, installing viewsonic boards and troubleshooting computer problems."
-    },
-    {
-      "employer": "The Church of Jesus Christ of Latter-Day Saints",
-      "location": "Taber, AB",
-      "title": "Service Missionary",
-      "starts": ["Nov. 2021"],
-      "ends": ["Nov. 2023"],
-      "description": "I volunteered at multiple places, including the Interfaith Food Bank, Clearview Lodge, the LDS Bishop’s Storehouse and the Lethbridge Soup Kitchen. On average, I volunteered for 20-30 hours each week. During this time, I stocked shelves, helped customers and operated a forklift."
-    },
-    {
-      "employer": "Bonduelle",
-      "location": "Taber, AB",
-      "title": "Pea/Corn Combine Operator",
-      "starts": ["July 2020", "July 2021"],
-      "ends": ["Aug. 2020", "Oct. 2021"],
-      "description": "I worked 12 hour shifts during the summer to operate pea combines and corn combines to harvest peas/corn."
-    },
-    {
-      "employer": "Roger's Sugar, Lantic",
-      "location": "Taber, AB",
-      "title": "General Laborer",
-      "starts": ["Sept. 2020"],
-      "ends": ["Feb. 2021"],
-      "description": "I worked 8 hour shifts during the sugar beet campaign. I was mostly cleaning or packaging icing sugar. I was trained to use a fork-lift, but the certificate has expired."
-    }
-  ],
-  "education": [
-    {
-      "school": "BYU Idaho - Pathways Program",
-      "location": "Online",
-      "degree": "Software Development",
-      "start": "Jan. 2024",
-      "end": "Now",
-      "details": [
-        "Web and Computer Programming Certificate -- 2024",
-        "Web Development Certificate -- Currently Enrolled",
-        "Associates of Software Development - Expected 2025"
-      ]
-    },
-    {
-      "school": "W.R.Myers High School",
-      "location": "Taber, AB",
-      "degree": "High School Diploma",
-      "start": "Sept. 2007",
-      "end": "June 2020",
-      "details": []
-    }
-  ],
-  "skills": {
-    "programming": [
-      "C++",
-      "HTML",
-      "CSS",
-      "Javascript",
-      "Java",
-      "C#",
-      "Python",
-      "SQL",
-      "Next JS",
-      "React JS",
-      "Tailwind CSS",
-      "Github",
-      "Typescript",
-      "VS Code"
-    ],
-    "IT": [
-      "Computer Repair",
-      "Chromebook Repair",
-      "Terminating Ethernet",
-      "Windows 10",
-      "Windows 11",
-      "Mac OS",
-      "Chrome OS",
-      "Network Testing"
-    ],
-    "other": ["Hard Working", "Punctual", "Detail Oriented"]
-  }
+	"contact": {
+		"phone": "(403) 892 - 2291",
+		"email": "johansenben12@gmail.com"
+	},
+	"links": {
+		"portfolio": "",
+		"linkedin": ""
+	},
+	"experience": [
+		{
+			"employer": "Horizon School Division",
+			"location": "Taber, AB",
+			"title": "Casual I.T. Technician",
+			"starts": ["Nov. 2024"],
+			"ends": ["Jan. 2025"],
+			"description": "I was recalled on a casual basis to assist the tech team/IT department during a leave.  My tasks have been similar to the summer position.  I have completed support tickets, repaired chromebooks/computers and projectors, delivered technology orders, and explained tech problems to staff."
+		},
+		{
+			"employer": "Horizon School Division",
+			"location": "Taber, AB",
+			"title": "Summer Tech Assistant",
+			"starts": ["May 2024"],
+			"ends": ["Aug. 2024"],
+			"description": "I worked with the tech team/IT department and did  various tasks including repairing chromebooks/computers, answering questions about technology, testing technology, terminated RJ45 cables (ethernet), and toning/tracing ethernet cables, installing windows 10, organizing the tech workroom, installing viewsonic boards and troubleshooting computer problems."
+		},
+		{
+			"employer": "The Church of Jesus Christ of Latter-Day Saints",
+			"location": "Taber, AB",
+			"title": "Service Missionary",
+			"starts": ["Nov. 2021"],
+			"ends": ["Nov. 2023"],
+			"description": "I volunteered at multiple places, including the Interfaith Food Bank, Clearview Lodge, the LDS Bishop’s Storehouse and the Lethbridge Soup Kitchen. On average, I volunteered for 20-30 hours each week. During this time, I stocked shelves, helped customers and operated a forklift."
+		},
+		{
+			"employer": "Bonduelle",
+			"location": "Taber, AB",
+			"title": "Pea/Corn Combine Operator",
+			"starts": ["July 2020", "July 2021"],
+			"ends": ["Aug. 2020", "Oct. 2021"],
+			"description": "I worked 12 hour shifts during the summer to operate pea combines and corn combines to harvest peas/corn."
+		},
+		{
+			"employer": "Roger's Sugar, Lantic",
+			"location": "Taber, AB",
+			"title": "General Laborer",
+			"starts": ["Sept. 2020"],
+			"ends": ["Feb. 2021"],
+			"description": "I worked 8 hour shifts during the sugar beet campaign. I was mostly cleaning or packaging icing sugar. I was trained to use a fork-lift, but the certificate has expired."
+		}
+	],
+	"education": [
+		{
+			"school": "BYU Idaho - Pathways Program",
+			"location": "Online",
+			"degree": "Software Development",
+			"start": "Jan. 2024",
+			"end": "Now",
+			"details": [
+				"Web and Computer Programming Certificate -- 2024",
+				"Web Development Certificate -- Currently Enrolled",
+				"Associates of Software Development - Expected 2025"
+			]
+		},
+		{
+			"school": "W.R.Myers High School",
+			"location": "Taber, AB",
+			"degree": "High School Diploma",
+			"start": "Sept. 2007",
+			"end": "June 2020",
+			"details": []
+		}
+	],
+	"skills": {
+		"programming": [
+			"C++",
+			"HTML",
+			"CSS",
+			"Javascript",
+			"Java",
+			"C#",
+			"Python",
+			"SQL",
+			"Next JS",
+			"React JS",
+			"Tailwind CSS",
+			"Github",
+			"Typescript",
+			"VS Code"
+		],
+		"IT": [
+			"Computer Repair",
+			"Chromebook Repair",
+			"Terminating Ethernet",
+			"Windows 10",
+			"Windows 11",
+			"Mac OS",
+			"Chrome OS",
+			"Network Testing"
+		],
+		"other": ["Hard Working", "Punctual", "Detail Oriented"]
+	}
 }

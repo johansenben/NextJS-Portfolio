@@ -1,12 +1,12 @@
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  padding: 1em 4em;
-  background: var(--navbar-bg);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	box-sizing: border-box;
+	padding: 1em 4em;
+	background: var(--navbar-bg);
 }
 
 .header > span {
-  font-size: 2em;
+	font-size: 2em;
 }
