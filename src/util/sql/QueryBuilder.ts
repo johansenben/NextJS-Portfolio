@@ -1,4 +1,4 @@
-import { cleanSQL, Prop, PropWithAlias, SQLType, Table } from "./BuilderTypes";
+import { Prop, SQLType, Table } from "./BuilderTypes";
 import { INSERT } from "./InsertBuilder";
 import { SELECT } from "./SelectBuilder";
 

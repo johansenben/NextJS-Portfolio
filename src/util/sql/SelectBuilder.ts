@@ -5,9 +5,9 @@ const orderTypes = ["ASC", "DESC"] as const;
 
 type JoinType = (typeof joinTypes)[number];
 type JoinData = {
-  joinType: JoinType;
-  table: Table;
-  condition: Condition;
+	joinType: JoinType;
+	table: Table;
+	condition: Condition;
 };
 type OrderType = (typeof orderTypes)[number];
 
@@ -50,21 +50,21 @@ export function SELECT<T extends Generic>(...args: P8<T>): WithoutLIMIT;
 export function SELECT<T extends Generic>(...args: P9<T>): WithoutOFFSET;
 
 export function SELECT<T extends Partial<Record<Prop, SQLType>>, T2 extends Table>(
-  withQuery: string | null,
-  table: T2,
-  props: (keyof T | { prop: keyof T; as: string })[],
-  isDistinct: boolean = false,
-  joins: JoinData[] = [],
-  where?: string | undefined,
-  groupBy?: Prop[] | undefined,
-  having?: Condition | undefined,
-  orderBy: { prop: Prop; type: OrderType }[] = [],
-  limit?: number | undefined,
-  offset?: number | undefined
+	withQuery: string | null,
+	table: T2,
+	props: (keyof T | { prop: keyof T; as: string })[],
+	isDistinct: boolean = false,
+	joins: JoinData[] = [],
+	where?: string | undefined,
+	groupBy?: Prop[] | undefined,
+	having?: Condition | undefined,
+	orderBy: { prop: Prop; type: OrderType }[] = [],
+	limit?: number | undefined,
+	offset?: number | undefined
 ) {
-  return {
-    toString: () =>
-      cleanSQL(`
+	return {
+		toString: () =>
+			cleanSQL(`
       ${withQuery ? `WITH ${withQuery}` : ""}
       SELECT ${isDistinct ? "DISTINCT " : ""}${props.map((p) => (typeof p !== "object" ? p : `${String(p.prop)} AS ${p.as}`)).join(", ")} 
       FROM ${table} 
@@ -75,40 +75,39 @@ export function SELECT<T extends Partial<Record<Prop, SQLType>>, T2 extends Tabl
       ${limit ? "LIMIT " + limit : ""}
       ${offset ? "OFFSET " + offset : ""};`),
 
-    ...(!where && {
-      JOIN: (joinType: JoinType, table: Table, condition: Condition) =>
-        SELECT(withQuery, table, props, isDistinct, [...joins, { joinType, table, condition }])
-    }),
-    ...(!where && {
-      WHERE: (prop: Prop, operator: Operator, value: string) =>
-        SELECT(withQuery, table, props, isDistinct, joins, conditionToString([prop, operator, value]))
-    }),
-    ...(!groupBy && {
-      GROUP_BY: (...groupProps: Prop[]) => SELECT(withQuery, table, props, isDistinct, joins, where, groupProps)
-    }),
-    ...(groupBy &&
-      !having && {
-        HAVING: (condition: Condition) =>
-          SELECT(withQuery, table, props, isDistinct, joins, where, groupBy, condition)
-      }),
-    ...(!limit && {
-      ORDER_BY: (prop: Prop, orderType: OrderType) =>
-        SELECT(withQuery, table, props, isDistinct, joins, where, groupBy ?? [], having, [
-          ...orderBy,
-          { prop, type: orderType }
-        ])
-    }),
-    ...(!limit && {
-      LIMIT: (limit: number) =>
-        SELECT(withQuery, table, props, isDistinct, joins, where, groupBy ?? [], having, orderBy, limit)
-    }),
-    ...(!offset && {
-      OFFSET: (offset: number) =>
-        SELECT(withQuery, table, props, isDistinct, joins, where, groupBy ?? [], having, orderBy, limit, offset)
-    })
-  };
+		...(!where && {
+			JOIN: (joinType: JoinType, table: Table, condition: Condition) =>
+				SELECT(withQuery, table, props, isDistinct, [...joins, { joinType, table, condition }])
+		}),
+		...(!where && {
+			WHERE: (prop: Prop, operator: Operator, value: string) =>
+				SELECT(withQuery, table, props, isDistinct, joins, conditionToString([prop, operator, value]))
+		}),
+		...(!groupBy && {
+			GROUP_BY: (...groupProps: Prop[]) => SELECT(withQuery, table, props, isDistinct, joins, where, groupProps)
+		}),
+		...(groupBy &&
+			!having && {
+				HAVING: (condition: Condition) => SELECT(withQuery, table, props, isDistinct, joins, where, groupBy, condition)
+			}),
+		...(!limit && {
+			ORDER_BY: (prop: Prop, orderType: OrderType) =>
+				SELECT(withQuery, table, props, isDistinct, joins, where, groupBy ?? [], having, [
+					...orderBy,
+					{ prop, type: orderType }
+				])
+		}),
+		...(!limit && {
+			LIMIT: (limit: number) =>
+				SELECT(withQuery, table, props, isDistinct, joins, where, groupBy ?? [], having, orderBy, limit)
+		}),
+		...(!offset && {
+			OFFSET: (offset: number) =>
+				SELECT(withQuery, table, props, isDistinct, joins, where, groupBy ?? [], having, orderBy, limit, offset)
+		})
+	};
 }
 
 //todo - make props a method and toString doesnt exist until props method is used at least once
-  //available props should include props from join
+//available props should include props from join
 //or add props method as an additional way of adding props
