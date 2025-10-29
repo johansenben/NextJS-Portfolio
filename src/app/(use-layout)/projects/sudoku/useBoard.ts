@@ -67,9 +67,7 @@ export const useBoard = () => {
 		}
 		const valid = isValid(b, index, value);
 		if (pencilOn && state == cellStates.EMPTY) {
-			console.log(1);
 			if (!valid) return;
-			console.log(2);
 			toggleCellNote(index, value);
 			return;
 		}

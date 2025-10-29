@@ -1,0 +1,20 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+RUN apk add --no-cache git
+
+RUN git clone https://github.com/johansenben/NextJS-Portfolio .
+
+RUN npm install && npm run build
+
+#RUN npm install -g concurrently
+
+EXPOSE 3000
+#EXPOSE 3000 3001
+
+CMD ["npm", "start"]
+#CMD ["concurrently", "\"npm run start:next\"", "\"npm run start:express\""]
+
+#docker build -f Dockerfile.github -t portfolio-github .
+#docker run --rm -p 3000:3000 --name nextjs-portfolio portfolio-github
