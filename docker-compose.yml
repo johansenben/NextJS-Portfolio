@@ -1,0 +1,6 @@
+services: 
+  app:
+    build:
+      context: "https://github.com/johansenben/NextJS-Portfolio.git"
+    ports:
+      - "3000:3000"
