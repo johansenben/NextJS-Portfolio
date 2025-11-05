@@ -1,0 +1,6 @@
+.next
+node_modules
+eslint.config.mjs
+.prettierrc
+jest.config.js
+jest.setup.js

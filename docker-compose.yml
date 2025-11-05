@@ -1,6 +1,12 @@
 services: 
   app:
     build:
-      context: "https://github.com/johansenben/NextJS-Portfolio.git"
+      context: ./frontend
     ports:
-      - "3000:3000"
+      - "3000:${NEXT_PORT}"
+    environment:
+      NEXT_PORT: ${NEXT_PORT}
+    restart: unless-stopped
+
+#docker-compose up --build
+#docker-compose down
