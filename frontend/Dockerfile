@@ -13,7 +13,7 @@ RUN npm run build
 
 EXPOSE $NEXT_PORT
 
-CMD ["npm", "run", "start"]
+CMD ["sh", "-c", "npx next start -p $NEXT_PORT"]
 
 #docker build -f Dockerfile.local -t portfolio-local .
 #docker run --rm -p 3000:3000 --name nextjs-portfolio portfolio-local
